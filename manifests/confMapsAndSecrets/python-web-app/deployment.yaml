@@ -20,11 +20,17 @@ spec:
         volumeMounts:
           - name: db-connection
             mountPath: /opt
+          - name: db-secret-volume
+            readOnly: true
+            mountPath: "/etc/secret-volume"
         ports:
         - containerPort: 8000
       volumes: 
         - name: db-connection
           configMap:
             name: test-cm
+        - name: db-secret-volume
+          secret:
+            secretName: test-secret
       imagePullSecrets:
         - name: regcred

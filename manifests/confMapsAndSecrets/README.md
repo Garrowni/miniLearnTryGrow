@@ -91,24 +91,52 @@ volumes are storage. you create the storage and then let the pod read it.
 5. run `cat /opt/db-port` | more --> it should output your port
 
 
-6. now if you want to go ahead and change it.... go back into your cm.yml and make your changes saving them. 
+6. exit ssh! now if you want to go ahead and change it.... go back into your cm.yml and make your changes saving them. 
 (appears to be optional)
 
-7. (make sure your not sshd in still) run `kubectl edit configmaps <config map name>`
-* if you didnt make the change in your cm you can change it here, if you did it in your manifest file it should already be changed in here, save and close (whether you changed anything or not)
-Perhaps I just need to wait more time after saving? I need to investigate this further.
+7. run `kubectl apply -f <cm name>` apply your change
 
-8. Just the act of going into and exiting using edit seems to tell k8s what it needs in order to update the value on the pods.
+8. run `kubectl describe cm <cm name>` This should show your change 
 
 9. run `kubectl exec -it sample-python-app-<podstuff> -- /bin/bash`
 
 10. run `cat /opt/db-port` | more --> it should output your updated port
 
+---
 
+### Make a secret through cli rom literal
+1. run `kubectl create secret generic test-secret --from-literal=db-port-secret="3333"`
+
+2. if you run kubectl describe secrets test-secret you will see that you... cant see the value!
+
+Interesting --> decrypt basic k8 encryption
+1. run `kubectl edit secret test-secret`
+2. copy the encrypted value
+3. run `echo <encryptedvalue> | base64 --decode`
+
+Thats part of why it would be good to add additional encryption.  
+
+you could use something like hashicorp vault or "sealed secrets" but it will you require to pass it to the API server.
+
+4. in deplyment.yaml add a volume
 ```
-
+      volumes: 
+        - name: db-connection
+          configMap:
+            name: test-cm
+        - name: db-secret-volume
+          secret:
+            secretName: test-secret
 ```
-
+5. in deployment.yaml add a volume mount
+```
+          - name: db-secret-volume
+            readOnly: true
+            mountPath: "/etc/secret-volume"
+```
+6. apply the deployment.yml
+7. ssh onto a pod
+8. run `cat /etc/secret-volume/db-port-secret`
 ---
 # Useful Links
 [k8.io/configMaps](https://kubernetes.io/docs/concepts/configuration/configmap/)
