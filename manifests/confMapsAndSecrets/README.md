@@ -30,6 +30,13 @@ If hacker is trying to steal your stuff and has gained access to you k8 cluster 
 # Practicals
 
 ## Config Map
+
+### Using it as ENV vars ###
+DONT DO THIS!
+Why? because you cant change an env var in a container without restarting the container....
+WHY IS THAT BAD?! because traffic loss!!!!
+What do you use instead??? Volume Mounts!
+(SEE NEXT SECTION)
 1. Create a config map called `cm.yml`
 2. put an extremely basic config in there. For example
 ```
@@ -64,7 +71,9 @@ data:
 10. from in the node run `env | grep -i db` --> this will output the env var yay!
 
 ---
+## Volume Mount
 
+---
 # Useful Links
 [k8.io/configMaps](https://kubernetes.io/docs/concepts/configuration/configmap/)
 [k8.io/secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
