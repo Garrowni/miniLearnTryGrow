@@ -72,6 +72,42 @@ data:
 
 ---
 ## Volume Mount
+volumes are storage. you create the storage and then let the pod read it.
+1. go into `deployment.yaml`
+2. add a volume which reads from a configMap. the name will be the name for your volume under config map name will need to match the name in your cm.yml
+
+``` 
+      volumes: 
+        - name: db-connection
+          configMap:
+            name: test-cm
+
+```
+
+3. under containers add a volume mount. name should match the volume. mountPath is where you want to mount it on the pod.
+
+4. run `kubectl exec -it sample-python-app-<podstuff> -- /bin/bash`
+
+5. run `cat /opt/db-port` | more --> it should output your port
+
+
+6. now if you want to go ahead and change it.... go back into your cm.yml and make your changes saving them. 
+(appears to be optional)
+
+7. (make sure your not sshd in still) run `kubectl edit configmaps <config map name>`
+* if you didnt make the change in your cm you can change it here, if you did it in your manifest file it should already be changed in here, save and close (whether you changed anything or not)
+Perhaps I just need to wait more time after saving? I need to investigate this further.
+
+8. Just the act of going into and exiting using edit seems to tell k8s what it needs in order to update the value on the pods.
+
+9. run `kubectl exec -it sample-python-app-<podstuff> -- /bin/bash`
+
+10. run `cat /opt/db-port` | more --> it should output your updated port
+
+
+```
+
+```
 
 ---
 # Useful Links

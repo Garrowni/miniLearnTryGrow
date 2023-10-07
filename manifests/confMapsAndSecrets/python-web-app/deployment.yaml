@@ -17,13 +17,14 @@ spec:
       containers:
       - name: python-app
         image: ngarrow/python-app:latest
-        env:
-          - name: DB-PORT
-            valueFrom:
-              configMapKeyRef:
-                name: test-cm
-                key: db-port
+        volumeMounts:
+          - name: db-connection
+            mountPath: /opt
         ports:
         - containerPort: 8000
+      volumes: 
+        - name: db-connection
+          configMap:
+            name: test-cm
       imagePullSecrets:
         - name: regcred
