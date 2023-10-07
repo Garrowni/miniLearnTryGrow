@@ -68,3 +68,8 @@ SVC --> load balancing
     --> expose to world
 
 
+------------------
+Reminder: for this app its on 8080/demo
+so...
+1. minikube ssh
+2. curl -L http://xxx.xxx.xxx.xxx:8000/demo 
