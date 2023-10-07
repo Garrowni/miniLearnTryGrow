@@ -59,6 +59,9 @@ data:
         ports:
         - containerPort: 8000
 ```
+8. run `kubectl apply -f deploy.yaml` --> apply the change
+9. run `kubectl exec -it sample-python-app-<podstuff> -- /bin/bash`
+10. from in the node run `env | grep -i db` --> this will output the env var yay!
 
 ---
 
