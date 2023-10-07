@@ -1,5 +1,20 @@
 NOTE: This document contains base notes and has NOT been cleaned up at all yet.
 
+Default types in the YAML:
+1. Cluster IP --> only communicate inside k8, you would get discovery and load balancing
+2. Nodeport --> allows access inside organization/network(have access to your nodes or vpc)  (people with access to worker node ips), 
+3. LoadBalancer --> exposes to external world
+      --> by default will only work on cloud
+      --> need ingress if your gonna do local(will discuss later)
+ 
+
+------
+Advantages
+--> service descovery
+--> load balancing
+--> expose (available to world, available to org)
+-----
+
 SERVICES
 
 if there is no services...
