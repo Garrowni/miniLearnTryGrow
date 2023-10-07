@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-python-app
+  labels:
+    app: sample-python-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-python-app
+  template:
+    metadata:
+      labels:
+        app: sample-python-app
+    spec:
+      containers:
+      - name: python-app
+        image: ngarrow/python-app:latest
+        volumeMounts:
+          - name: db-connection
+            mountPath: /opt
+          - name: db-secret-volume
+            readOnly: true
+            mountPath: "/etc/secret-volume"
+        ports:
+        - containerPort: 8000
+      volumes: 
+        - name: db-connection
+          configMap:
+            name: test-cm
+        - name: db-secret-volume
+          secret:
+            secretName: test-secret
+      imagePullSecrets:
+        - name: regcred
