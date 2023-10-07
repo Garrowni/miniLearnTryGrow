@@ -1,5 +1,6 @@
 NOTE: This document contains base notes and has NOT been cleaned up at all yet.
 
+---
 
 Deployment —> USE THIS NOT POD
 
@@ -24,3 +25,8 @@ deployment —> if you create deployment replica set is automatically created.
 `kubectl get pods -w` —> lets you watch the status of hte pods live
 
  you update something in the manifest and want to apply the updates without shutting down your current shit you do kubectl apply -f <manifest>.yml
+
+
+---
+# Useful Links
+[k8.io/deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)

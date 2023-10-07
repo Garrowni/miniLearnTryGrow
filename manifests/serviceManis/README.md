@@ -1,8 +1,25 @@
 NOTE: This document contains base notes and has NOT been cleaned up at all yet.
 
+---
+
+IMPORTANT: On my mac if I set up a node port and try to use the minikube ip with the nodeport port it doesnt work.... 
+This is because  it tunnels the service to expose it to the outside world!
+
+Instead I need to run
+
+minikube service <service name> 
+
+You can get the service name from kubectl get svc
+
+You will be able to see use THAT ip/port combo to curl if your on the same network 
+
+---
+
 Default types in the YAML:
-1. Cluster IP --> only communicate inside k8, you would get discovery and load balancing
-2. Nodeport --> allows access inside organization/network(have access to your nodes or vpc)  (people with access to worker node ips), 
+1. Cluster IP --> only communicate inside k8, you would get discovery and load balancing 
+--> when trying to access it on my computer without ssh in I could not access it.
+2. Nodeport --> allows access inside organization/network(have access to your nodes or vpc)  (people with access to worker node ips),
+ --> I was able to access this on  my web browser. (see note at top of this doc) 
 3. LoadBalancer --> exposes to external world
       --> by default will only work on cloud
       --> need ingress if your gonna do local(will discuss later)
@@ -70,6 +87,13 @@ SVC --> load balancing
 
 ------------------
 Reminder: for this app its on 8080/demo
-so...
+so... using cluster port
 1. minikube ssh
 2. curl -L http://xxx.xxx.xxx.xxx:8000/demo 
+
+using node port
+1. curl -L
+
+
+# Useful Links
+[k8.io/services](https://kubernetes.io/docs/concepts/services-networking/service/)
