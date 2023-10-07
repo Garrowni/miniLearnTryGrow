@@ -1,6 +1,8 @@
 NOTE: This document contains base notes and has NOT been cleaned up at all yet.
 control plane
 
+---
+
 - api server
     - exposes k8s
     - takes all the requests from external stuff
@@ -34,7 +36,7 @@ Data plane/Worker Node components
 
 
 
--------------------------------
+--- 
 
 Container 
 - docker
@@ -53,5 +55,8 @@ Pod
     - volumes
     - etc…
 - runs spec of docker image and can make it a container
-- can make multiple in side (a pod. ould have multiple containers)
+- can make multiple in side (a pod could have multiple containers)
     - containers share network and storage
+---
+# Useful Links
+[k8.io/pods](https://kubernetes.io/docs/concepts/workloads/pods/)

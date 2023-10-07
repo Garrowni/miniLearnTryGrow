@@ -9,4 +9,4 @@ spec:
   ports:
     - port: 80
       targetPort: 8000 #port my app is running on
-      nodePort: 30007 #default 30000-32767
+      nodePort: 30007 #default 30000-32767gi

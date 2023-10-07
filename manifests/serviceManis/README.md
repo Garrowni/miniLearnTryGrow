@@ -1,5 +1,7 @@
 NOTE: This document contains base notes and has NOT been cleaned up at all yet.
 
+---
+
 Default types in the YAML:
 1. Cluster IP --> only communicate inside k8, you would get discovery and load balancing
 2. Nodeport --> allows access inside organization/network(have access to your nodes or vpc)  (people with access to worker node ips), 
@@ -70,6 +72,13 @@ SVC --> load balancing
 
 ------------------
 Reminder: for this app its on 8080/demo
-so...
+so... using cluster port
 1. minikube ssh
 2. curl -L http://xxx.xxx.xxx.xxx:8000/demo 
+
+using node port
+1. curl -L
+
+
+# Useful Links
+[k8.io/services](https://kubernetes.io/docs/concepts/services-networking/service/)

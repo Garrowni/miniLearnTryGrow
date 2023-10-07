@@ -2,6 +2,7 @@
 Learn containers!
 
 
+---
 
 Important General Knowledge
 
@@ -84,3 +85,5 @@ Data Plane (worker nodes)
 - node port --> kube-proxy updates IPTables with node ip address & port choesen in the service config to access the pods
 
 - LB --> C-C-M creates external LB IP using underlying cloud provider login in the CCM and then users can access services using the external IPvb 
+
+---
