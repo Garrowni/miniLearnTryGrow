@@ -65,6 +65,10 @@ Data Plane (worker nodes)
 - Container Runtime --> needed to run the actual container
                     --> ex/ containerd
 
+----What are labels and selectors used for?------
+- used by service to identify pods
+    - even if a pod is deleted and a new pod is spun up the ip will change by label wont.
+
 --------Different types of services in k8s---------
 - cluster ip mode
     --> only exposed within cluster
