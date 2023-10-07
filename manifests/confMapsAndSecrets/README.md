@@ -27,6 +27,40 @@ If hacker is trying to steal your stuff and has gained access to you k8 cluster 
 
 ---
 
+# Practicals
+
+## Config Map
+1. Create a config map called `cm.yml`
+2. put an extremely basic config in there. For example
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-cm
+data:
+  db-port: "3306"
+
+```
+3. run `kubectl apply -f cm.yml` --> apply the config map
+4. run `kubectl get cm` --> get a list of config maps
+5. run `kubectl describe cm test-cm` --> get details of the cm
+6. go back into your deployment config (deployment.yml)
+7. in container spec add a block to get the env var
+```
+      containers:
+      - name: python-app
+        image: ngarrow/python-app:latest
+        env:
+          - name: DB-PORT #what your going to use to call it
+            valueFrom:
+              configMapKeyRef:   
+                name: test-cm #name you gave the config map
+                key: db-port  # key thats in data in the config map
+        ports:
+        - containerPort: 8000
+```
+
+---
 
 # Useful Links
 [k8.io/configMaps](https://kubernetes.io/docs/concepts/configuration/configmap/)
