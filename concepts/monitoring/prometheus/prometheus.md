@@ -8,8 +8,8 @@ NOTE: This document contains base notes and has NOT been cleaned up at all yet.
 Install Prometheus using helm
 1. if helm isnt installed run `brew install helm`
 2. run `helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
-3. if you already had it installed but theres a new version run `helm repo update`
-4. install prometheus controller and reuired configs like config map etc. `helm install prometheus prometheus-community/prometheus`
+3. always run `helm repo update`
+4. install prometheus controller and required configs like config map etc. `helm install prometheus prometheus-community/prometheus`
 
 
 If you run `kubectl get pods` you will get:
