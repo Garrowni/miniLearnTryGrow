@@ -2,38 +2,41 @@
 Learn containers!
 
 IMPORTANT FOR ALL THE THINGS
-I use a macOS that has darwin ARM64... for most people they can use the minikube ip with node port to access things on their browser... not us lucky mac darwin users! instead heres what we have to do. 
 
-How to tunnel a service!
-1. get the service name by using `kubectl get svc`
-2. run `minikube service prometheus-server-ext`
-3.  Wait a moment, it will open a tunnel and pop open the browser window for you.
+I use a macOS that has darwin ARM64. For most people they can use the minikube ip with NodePort to access things on their browser, not us lucky mac darwin users! Instead here's what we have to do... 
+
+### How to tunnel a service!
+1. Get the service name by using `kubectl get svc`
+2. Run `minikube service prometheus-server-ext`
+3. Wait a moment, it will open a tunnel and pop open the browser window for you.
+
 ---
 
-Important General Knowledge
+# Important General Knowledge
 
----------Main Differences Between Docker and Kubernetes--------
+### Main Differences Between Docker and Kubernetes
 Docker = container platform
-K8s = container orechstration --> allows you to build your docker image and offers auto healing. auto scaling, clustering, load balancing, etc.
+
+K8s = container orchestration --> allows you to build your docker image and offers auto healing. auto scaling, clustering, load balancing, etc.
 
 
----------Main Differences Between Docker Swarm and Kubernetes--------
-- dark swarm is only for simple aplications, simple and fast set up, support is more limited
+### Main Differences Between Docker Swarm and Kubernetes
+- dark swarm is only for simple applications, simple and fast set up, support is more limited
 - kubernetes is suitable for large orgs, offers more scalability, network capabilities policies, huge 3rd party ecosystem support
 
 
----------Docker container vs Kubernetes Pod---------
-- docker container has the app itself packaged up and whatever is needed to run the appk
-- kubernetes pod is defined using YAML (runtime spec) that lets you RUN 1 or more containers
+### Docker container vs Kubernetes Pod
+- docker container has the app itself packaged up and whatever is needed to run the app.
+- kubernetes pod is defined using YAML (runtime spec) that lets you RUN 1 or more containers.
 
 
----------What is a namespace in k8s?--------------
-- its kind of like a project in AWS or GCP --> k8s = reviewly && workspaces = project1, project2
-- lets you seperate workspaces, allow for multiple teams/projects without stomping on eachothers toes
+### What is a namespace in k8s?
+- it's kind of like a project in AWS or GCP --> k8s = reviewly && workspaces = project1, project2
+- lets you separate workspaces, allow for multiple teams/projects without stomping on each others toes
 - but its all the same cluster technically
 
 
---------day to day activities of DevOps eng on k8s--------------
+### day to day activities of DevOps eng on k8s
 - manage k8s clusters for org
 - ensure apps are deployed and there are no issues with them
 - monitoring is good
