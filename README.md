@@ -1,7 +1,13 @@
 # miniLearnTryGrow
 Learn containers!
 
+IMPORTANT FOR ALL THE THINGS
+I use a macOS that has darwin ARM64... for most people they can use the minikube ip with node port to access things on their browser... not us lucky mac darwin users! instead heres what we have to do. 
 
+How to tunnel a service!
+1. get the service name by using `kubectl get svc`
+2. run `minikube service prometheus-server-ext`
+3.  Wait a moment, it will open a tunnel and pop open the browser window for you.
 ---
 
 Important General Knowledge
